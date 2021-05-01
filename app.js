@@ -3,8 +3,15 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-	res.send('welcome to the partyyyyy')
+	res.send('welcome to the party!')
 })
 
-app.listen(port, () => console.log('example app listening on port ${port}!'))
+app.get('/special', (req, res) => {
+	res.status(418)
+	res.set({
+		'X-SPECIAL': 'you reached me!'
+	})
+})
+
+app.listen(port, () => console.log(`app listening on port ${port}!`))
 
