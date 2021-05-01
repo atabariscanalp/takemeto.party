@@ -11,6 +11,7 @@ app.get('/special', (req, res) => {
 	res.set({
 		'X-SPECIAL': 'you reached me!'
 	})
+	res.send('I prefer coffee.')
 })
 
 app.listen(port, () => console.log(`app listening on port ${port}!`))
