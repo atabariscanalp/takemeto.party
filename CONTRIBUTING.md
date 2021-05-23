@@ -12,7 +12,7 @@ Following this guidelines helps to form a managable and organized coding environ
 
 ## Pull Requests
 
-This project will grow with good pull requests so we depend on you to make a good pull request. **Please** avoid from making unrelated pull requests, it will take both developer's and your time for no reason.
+This project will grow with good pull requests so we depend on you to make a good pull request. **Please** avoid from making unrelated pull requests, it will take both ours and your time for no reason.
 
 We are open for changes, both major and minor, but we strongly advice you to first discuss major changes in [discussion](https://github.com/atabariscanalp/), then work on them. It will save both your and our time.
 
