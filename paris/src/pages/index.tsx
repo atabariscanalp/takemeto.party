@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react";
+import { LoginPage } from "../components/modules/login-page/LoginPage";
 
-const Index = () => (
-	<div className="p-5">hey</div>
-)
+const Index = () => <LoginPage />;
 
-export default Index
+export default Index;

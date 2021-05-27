@@ -10,7 +10,8 @@
     "build-storybook": "build-storybook -s ./public",
     "cy-open": "cypress open",
     "cy-run": "cypress run --headless --browser chrome",
-    "format": "prettier --write src"
+    "format": "prettier --write src",
+    "make-icon": "svgr ./public/icons --typescript --out-dir src/icons"
   },
   "dependencies": {
     "next": "latest",
@@ -24,6 +25,7 @@
     "@storybook/addon-links": "^6.2.9",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/react": "^6.2.9",
+    "@svgr/cli": "^5.5.0",
     "@types/node": "^15.6.0",
     "@types/react": "^17.0.6",
     "autoprefixer": "^10.0.4",
