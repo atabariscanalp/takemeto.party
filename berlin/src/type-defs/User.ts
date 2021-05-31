@@ -15,17 +15,16 @@ registerEnumType(Role, {
 @ObjectType({ description: 'the user model' })
 export class User {
     @Field(type => ID)
-    id: String
+    id: string
 
     @Field()
-    email: String
+    email: string
 
     @Field()
-    username: String
+    username: string
 
-    @Field(type => Role)
     role: Role 
 
-    @Field(type => Profile)
-    profile: Profile
+    @Field({ nullable: true })
+    profile?: Profile
 }

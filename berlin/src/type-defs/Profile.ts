@@ -5,13 +5,13 @@ import { User } from "./User";
 @ObjectType({ description: 'the profile model' })
 export class Profile {
     @Field(type => ID)
-    id: String
+    id: string
 
     @Field({ nullable: true })
-    bio: String | null
+    bio?: string
 
-    @Field(type => User)
     user: User
     
-    userId: number
+    @Field(type => ID)
+    userId: string
 }
