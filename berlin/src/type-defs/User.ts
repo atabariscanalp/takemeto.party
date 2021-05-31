@@ -1,30 +1,30 @@
-import 'reflect-metadata'
+import 'reflect-metadata';
 import { Field, ID, ObjectType, registerEnumType } from 'type-graphql';
 import { Profile } from './Profile';
 
 enum Role {
-    USER,
-    ADMIN
+  USER,
+  ADMIN,
 }
 
 registerEnumType(Role, {
-    name: 'Role',
-    description: 'defines the role of user(user or admin)'
-})
+  name: 'Role',
+  description: 'defines the role of user(user or admin)',
+});
 
 @ObjectType({ description: 'the user model' })
 export class User {
-    @Field(type => ID)
-    id: string
+  @Field((type) => ID)
+  id: string;
 
-    @Field()
-    email: string
+  @Field()
+  email: string;
 
-    @Field()
-    username: string
+  @Field()
+  username: string;
 
-    role: Role 
+  role: Role;
 
-    @Field({ nullable: true })
-    profile?: Profile
+  @Field({ nullable: true })
+  profile?: Profile;
 }
