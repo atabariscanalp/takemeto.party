@@ -37,11 +37,6 @@ export class UserResolver {
         })
     }
 
-    @Query(() => User)
-    async me(@Root root) {
-        
-    }
-
     @Query(() => [User])
     async users() {
         return await prisma.user.findMany()

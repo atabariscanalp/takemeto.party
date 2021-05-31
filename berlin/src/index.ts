@@ -1,22 +1,25 @@
-import 'reflect-metadata'
-import * as tq from 'type-graphql'
-import { ApolloServer } from 'apollo-server'
-import { ProfileResolver, UserResolver } from './resolvers'
+import "reflect-metadata"
+import * as tp from 'type-graphql'
+import express from 'express'
+import { ApolloServer } from 'apollo-server-express'
+import { ProfileResolver, UserResolver } from "./resolvers"
 
-const PORT = process.env.PORT || 5000
 
-const app = async () => {
-    const schema = await tq.buildSchema({resolvers: [UserResolver, ProfileResolver]})
+(async () => {
 
-    const server = new ApolloServer({ 
-        schema,
-        context: {
+    const PORT = process.env.PORT || 5000
+    
+    const app = express()
 
-        }
+    const schema = await tp.buildSchema({ resolvers: [UserResolver, ProfileResolver]})
+
+    const server = new ApolloServer({
+        schema: schema
     })
 
-    const { url } = await server.listen(PORT)
-    console.log(`Server is running at ${url}`)
-}
+    server.applyMiddleware({ app })
 
-app()
+    app.listen(PORT, () => {
+        console.log(`server started at http://localhost:${PORT}/graphql`)
+    })
+})()

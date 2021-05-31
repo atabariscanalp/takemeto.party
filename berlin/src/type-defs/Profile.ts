@@ -10,6 +10,9 @@ export class Profile {
     @Field({ nullable: true })
     bio?: string
 
+    @Field()
+    avatar: string
+
     user: User
     
     @Field(type => ID)

@@ -20,8 +20,11 @@ model User {
 model Profile {
   id     String  @id @default(uuid())
   bio    String? @db.VarChar(255)
-  userId String  @unique
+  avatar String
+  userId String  @unique @map("user_id")
   user   User    @relation(fields: [userId], references: [id])
+
+  @@map("profiles")
 }
 
 enum Role {
