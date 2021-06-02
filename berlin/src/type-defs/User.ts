@@ -27,4 +27,7 @@ export class User {
 
   @Field({ nullable: true })
   profile?: Profile;
+
+  @Field({ nullable: true })
+  googleId?: string;
 }
