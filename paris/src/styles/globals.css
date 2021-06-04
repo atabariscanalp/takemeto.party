@@ -1,0 +1,33 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+  --color-primary-100: #f7921f;
+  --color-primary-200: #2f303a;
+  --color-primary-300: #030086;
+  --color-primary-400: #5f25a4;
+  --color-primary-500: #5f25a4;
+
+  --color-neutral-100: #ffffff;
+  --color-neutral-200: #f4f5f7;
+  --color-neutral-300: #e1e1e1;
+  --color-neutral-400: #737581;
+  --color-neutral-500: #4a4b53;
+  --color-neutral-600: #000000;
+
+  --color-success-100: #529e66;
+
+  --color-error-100: #d0454c;
+
+  --color-warning-100: #e1c542;
+}
+
+html,
+body,
+#__next {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-primary-200);
+  display: flex;
+}

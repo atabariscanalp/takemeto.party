@@ -1,0 +1,20 @@
+{
+  "name": "takemeto.party",
+  "version": "1.0.0",
+  "description": "<a href=\"https://takemeto.party\"><p align=\"center\">\r <img height=100 src=\"./assets/takemeto-party.svg\"/>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atabariscanalp/takemeto.party.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atabariscanalp/takemeto.party/issues"
+  },
+  "homepage": "https://github.com/atabariscanalp/takemeto.party#readme"
+}
