@@ -12,6 +12,13 @@
 
 ---
 
+## Structure
+| Codebase              |      Description          |
+| :-------------------- | :-----------------------: |
+| [paris](paris)        | Next js Frontend          |
+| [berlin](berlin)      | Express/Typegraphql API   |
+
+
 ## What is this app going to do?
 
 Well, we like listening to music right? 
