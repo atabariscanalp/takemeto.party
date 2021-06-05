@@ -64,12 +64,12 @@ Please read [CODE_OF_CONDUCT.md](https://github.com/atabariscanalp/takemeto.part
 
 ## How to run locally
 
-> **NOTE:** Right now I don't know what to do with env variables like GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET, so for a short time use your own variables. I'll take care of it in a short time.
-
 
 First clone the project to a local directory.
 
->For front end next app
+* For front end next app
+
+
 ```
 cd paris
 ```
@@ -82,27 +82,10 @@ To start the server
 yarn dev
 ```
 
->For back end express app
-```
-cd berlin
-```
-Install packages
-```
-npm install
-```
-Create your .env file and enter your Google oauth api credentials
-```
-touch .env
-```
-```
-DATABASE_URL=your_postgres_database_url
-GOOGLE_CLIENT_ID=your_google_oauth_client_id
-GOOGLE_CLIENT_SECRET=your_google_oauth_client_secret
-```
-Run the back end server
-```
-npm run dev
-```
+* For back end express app
+
+Check the instructions [here](berlin/README.md)
+
 
 ## Attribution
 
