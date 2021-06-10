@@ -53,6 +53,10 @@ Repeat the steps of connecting to postgresql and creating a database
 - Go to [google developer console](https://console.developers.google.com) and create a oauth2 client, then replace `GOOGLE_CLIENT_ID`
   and `GOOGLE_CLIENT_SECRET` in .env with your oauth2 app credentials.
 
+#### **3.1.Change JWT_SECRET**
+
+- You will find a `JWT_SECRET` in your .env file. You can change it whatever you like.
+
 ### **4.Create Database Tables**
 
 - The last step is creating the database tables. Just run
