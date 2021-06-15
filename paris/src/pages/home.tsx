@@ -4,12 +4,11 @@ import { gql } from "@apollo/client";
 
 const Home = ({ user }) => {
   return (
-    <>
-      <h1>welcome to home bitch </h1>
-      <p>
-        {user.username} - {user.email}
-      </p>
-    </>
+    <div className={"flex items-center justify-center w-full h-full"}>
+      <span className={"text-inverted"}>
+        welcome to home bitch {user.username} - {user.email}
+      </span>
+    </div>
   );
 };
 

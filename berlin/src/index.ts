@@ -59,9 +59,9 @@ import { getUserFromId, UserFindOrCreate } from "./auth/helper";
     const token = jwt.sign({ id, role }, process.env.JWT_SECRET!);
 
     res.cookie("auth_cookie", token, {
-      expires: dayjs().add(60, "days").toDate(),
+      expires: dayjs().add(365, "days").toDate(),
       httpOnly: true,
-      secure: false,
+      secure: process.env.NODE_ENV === "production",
       sameSite: false,
     });
 
@@ -70,7 +70,7 @@ import { getUserFromId, UserFindOrCreate } from "./auth/helper";
 
   app.get("/logout", (req, res) => {
     res.clearCookie("auth_cookie");
-    return res.redirect("/");
+    return res.redirect(`${process.env.UI_ROOT_URI}`);
   });
 
   const schema = await tp.buildSchema({
@@ -86,7 +86,6 @@ import { getUserFromId, UserFindOrCreate } from "./auth/helper";
   const server = new ApolloServer({
     schema: schema,
     context: async ({ req, res }) => {
-      console.log("REQ COOKIES", req.cookies);
       const token = jwt.verify(
         req.cookies["auth_cookie"],
         process.env.JWT_SECRET!
