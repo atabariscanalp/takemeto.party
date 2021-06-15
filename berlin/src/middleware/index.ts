@@ -1,12 +1,15 @@
-import { Application } from 'express';
-import passport from 'passport';
-import requestMethods from './requestMethods';
-import cookieParser from 'cookie-parser';
-import { Strategy } from './passport.config';
+import { Application } from "express";
+import requestMethods from "./requestMethods";
+import cookieParser from "cookie-parser";
+import cors from "cors";
 
 export default (app: Application) => {
-  passport.use(Strategy);
-  app.use(requestMethods);
-  app.use(passport.initialize());
   app.use(cookieParser());
+  app.use(requestMethods);
+  app.use(
+    cors({
+      origin: "http://localhost:3000",
+      credentials: true,
+    })
+  );
 };
