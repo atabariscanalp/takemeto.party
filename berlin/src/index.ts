@@ -62,7 +62,7 @@ import { getUserFromId, UserFindOrCreate } from "./auth/helper";
       expires: dayjs().add(365, "days").toDate(),
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: false,
+      sameSite: "strict",
     });
 
     return res.redirect(`${process.env.UI_ROOT_URI}/home`);
@@ -107,6 +107,8 @@ import { getUserFromId, UserFindOrCreate } from "./auth/helper";
   });
 
   app.listen(PORT, () => {
-    console.log(`server started at http://localhost:${PORT}/graphql`);
+    console.log(
+      `server started at https://${process.env.SERVER_ROOT_URI}:${PORT}/graphql`
+    );
   });
 })();

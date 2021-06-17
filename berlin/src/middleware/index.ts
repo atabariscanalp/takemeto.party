@@ -8,7 +8,7 @@ export default (app: Application) => {
   app.use(requestMethods);
   app.use(
     cors({
-      origin: "http://localhost:3000",
+      origin: process.env.SERVER_ROOT_URI,
       credentials: true,
     })
   );
