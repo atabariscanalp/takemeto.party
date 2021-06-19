@@ -18,6 +18,10 @@ import { getUserFromId, UserFindOrCreate } from "./auth/helper";
 
   middleware(app);
 
+  app.get("/", (req, res) => {
+	  res.send("hello world");
+  });
+
   app.get("/auth/google", (req, res) => {
     return res.redirect(getGoogleAuthUrl());
   });
@@ -29,7 +33,7 @@ import { getUserFromId, UserFindOrCreate } from "./auth/helper";
       code,
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      redirectUri: `${process.env.SERVER_ROOT_URI}/auth/google/callback`,
+      redirectUri: `${process.env.SERVER_ROOT_URI}/api/auth/google/callback`,
     });
 
     const { sub, name, given_name, picture, email } = await axios
@@ -64,8 +68,7 @@ import { getUserFromId, UserFindOrCreate } from "./auth/helper";
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
     });
-
-    return res.redirect(`${process.env.UI_ROOT_URI}/home`);
+    return res.redirect(`${process.env.UI_ROOT_URI}/home#`);
   });
 
   app.get("/logout", (req, res) => {
@@ -108,7 +111,7 @@ import { getUserFromId, UserFindOrCreate } from "./auth/helper";
 
   app.listen(PORT, () => {
     console.log(
-      `server started at https://${process.env.SERVER_ROOT_URI}:${PORT}/graphql`
+      `server started at http://localhost:${PORT}`
     );
   });
 })();

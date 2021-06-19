@@ -6,7 +6,7 @@ const SERVER_ROOT = "takemeto.party";
 
 export const LoginPage: React.FC = () => {
   const onClick = () => {
-    window.location.href = `https://${SERVER_ROOT}:5000/auth/google`;
+    window.location.href = `https://${SERVER_ROOT}/api/auth/google`;
   };
 
   return (
