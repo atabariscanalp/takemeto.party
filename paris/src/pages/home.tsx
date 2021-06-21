@@ -15,7 +15,17 @@ const Home = ({ user }) => {
 export async function getServerSideProps(context) {
   const client = initializeApollo();
 
-  const cookie = context.req.headers.cookie;
+  const cookie = context.req?.headers?.cookie;
+
+  if (!cookie) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
   const { data } = await client.query({
     query: gql`
       query me {

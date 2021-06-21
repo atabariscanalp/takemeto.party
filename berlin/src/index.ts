@@ -84,7 +84,7 @@ import { getUserFromId, UserFindOrCreate } from "./auth/helper";
   };
 
   const getUser = async (req: Request) => {
-    if (!!req.cookies) return null;
+    if (!req.cookies["auth_cookie"]) return null;
 
     const token = jwt.verify(
       req.cookies["auth_cookie"],
