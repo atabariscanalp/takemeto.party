@@ -1,6 +1,6 @@
 import React from "react";
-import client from "../graphql/apollo-client";
-import { gql } from "@apollo/client";
+import { initializeApollo } from "../graphql/apollo-client";
+import { USER } from "../graphql/queries/user";
 
 const Home = ({ user }) => {
   return (
@@ -13,16 +13,11 @@ const Home = ({ user }) => {
 };
 
 export async function getServerSideProps(context) {
+  const client = initializeApollo();
+
   const cookie = context.req.headers.cookie;
   const { data } = await client.query({
-    query: gql`
-      query me {
-        me {
-          username
-          email
-        }
-      }
-    `,
+    query: USER,
     context: {
       headers: {
         Cookie: cookie,
