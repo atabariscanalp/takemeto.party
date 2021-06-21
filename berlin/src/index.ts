@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import * as tp from "type-graphql";
-import express from "express";
+import express, { Request } from "express";
 import { ApolloServer } from "apollo-server-express";
 import { ProfileResolver, UserResolver } from "./resolvers";
 import { PrismaClient, Role } from "@prisma/client";
@@ -83,14 +83,21 @@ import { getUserFromId, UserFindOrCreate } from "./auth/helper";
     iat: Number;
   };
 
+  const getUser = async (req: Request) => {
+    if (!!req.cookies) return null;
+
+    const token = jwt.verify(
+      req.cookies["auth_cookie"],
+      process.env.JWT_SECRET!
+    );
+
+    return await getUserFromId((token as Token).id);
+  };
+
   const server = new ApolloServer({
     schema: schema,
     context: async ({ req, res }) => {
-      const token = jwt.verify(
-        req.cookies["auth_cookie"],
-        process.env.JWT_SECRET!
-      );
-      const user = await getUserFromId((token as Token).id);
+      const user = await getUser(req);
       const context = {
         prisma,
         req,
