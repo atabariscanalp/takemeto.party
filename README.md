@@ -40,9 +40,7 @@ Of course this is a simple description of the app and I'm open to new suggestion
 
 ### Where you can find this app?
 
-It will live on [takemeto.party](https://takemeto.party)
-
-*I must say I have not configured the nginx and the server yet.*
+It lives on [takemeto.party](https://takemeto.party)
 
 
 **Let's make this!**
