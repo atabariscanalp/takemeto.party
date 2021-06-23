@@ -17,6 +17,12 @@
  */
 // eslint-disable-next-line no-unused-vars
 module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
-}
+  console.log("r token", process.env.GOOGLE_REFRESH_TOKEN);
+  config.env.googleRefreshToken =
+    "1//048J4n4Qf39YRCgYIARAAGAQSNwF-L9IrqyVZKngAP5HmgA7xToalrHUnhmYhXbpkJaUr3Uy73KTbk4Nj9IeN1_zOMQBkll-eagg";
+  config.env.googleClientId =
+    "826665490492-72np8fdstq09nkrodlgchsb3idaka95c.apps.googleusercontent.com";
+  config.env.googleClientSecret = "yBSnfL0M6TFDER5WZ5102kAR";
+
+  return config;
+};
