@@ -5,11 +5,9 @@ Cypress.Commands.add("loginByGoogleApi", () => {
     url: "https://www.googleapis.com/oauth2/v4/token",
     body: {
       grant_type: "refresh_token",
-      client_id:
-        "826665490492-72np8fdstq09nkrodlgchsb3idaka95c.apps.googleusercontent.com",
-      client_secret: "yBSnfL0M6TFDER5WZ5102kAR",
-      refresh_token:
-        "1//048J4n4Qf39YRCgYIARAAGAQSNwF-L9IrqyVZKngAP5HmgA7xToalrHUnhmYhXbpkJaUr3Uy73KTbk4Nj9IeN1_zOMQBkll-eagg",
+      client_id: process.env.GOOGLE_CLIENT_ID,
+      client_secret: process.env.GOOGLE_CLIENT_SECRET,
+      refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
     },
   }).then(({ body }) => {
     const { access_token, id_token } = body;
