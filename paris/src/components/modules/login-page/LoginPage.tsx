@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
 import { USER } from "../../../graphql/queries/user";
 
-export const LoginPage: React.FC = ({}) => {
+export const LoginPage: React.FC = () => {
   const onClick = () => {
     window.location.href = "http://localhost:5000/auth/google";
   };
