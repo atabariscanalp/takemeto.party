@@ -1,11 +1,7 @@
-import { Tag } from "@prisma/client";
 import {
   Arg,
-  Args,
-  ArgsType,
   Ctx,
   Field,
-  ID,
   InputType,
   Mutation,
   Query,
@@ -13,13 +9,13 @@ import {
   UseMiddleware,
 } from "type-graphql";
 import { isAuth } from "../middleware/isAuth";
-import { Room } from "../type-defs";
+import { Room, Tag } from "../type-defs";
 import { Context } from "../utils/context";
 
 @InputType({ description: "new room data" })
 class AddRoomInput implements Partial<Room> {
   @Field(() => Tag)
-  _tag: Tag;
+  _tag: keyof typeof Tag;
 
   @Field()
   _name: string;
@@ -56,7 +52,8 @@ export class RoomResolver {
   @UseMiddleware(isAuth)
   async createRoom(
     @Ctx() ctx: Context,
-    @Args() { _tag, _name, _isPrivate, _description }: AddRoomInput
+    @Arg("addRoomArgs")
+    { _tag, _name, _isPrivate, _description }: AddRoomInput
   ) {
     return await ctx.prisma.room.create({
       data: {
@@ -69,6 +66,16 @@ export class RoomResolver {
             id: ctx.user.id,
           },
         },
+      },
+    });
+  }
+
+  @Mutation(() => Room)
+  @UseMiddleware(isAuth)
+  async deleteRoom(@Ctx() ctx: Context, @Arg("id") _id: string) {
+    return await ctx.prisma.room.delete({
+      where: {
+        id: _id,
       },
     });
   }

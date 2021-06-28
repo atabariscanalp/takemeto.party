@@ -1,40 +1,34 @@
 import React from "react";
-import { gql } from "@apollo/client";
+import { MainLayout } from "../components/layouts/MainLayout";
+import { Header } from "../components/ui/Header";
+import { Rooms } from "../components/ui/rooms/Rooms";
+import { LeftSidebar } from "../components/ui/sidebars/LeftSidebar";
+import { RightSidebar } from "../components/ui/sidebars/RightSidebar";
 import { initializeApollo } from "../graphql/apollo-client";
+import { ROOMS } from "../graphql/queries/room";
+import { Room } from "../graphql/types";
 
-const Home = ({ user }) => {
+interface RoomsProps {
+  rooms: [Room] | null;
+}
+
+const HomePage: React.FC<RoomsProps> = ({ rooms }) => {
   return (
-    <div className={"flex items-center justify-center w-full h-full"}>
-      <span className={"text-inverted"}>
-        welcome to home bitch {user.username} - {user.email}
-      </span>
-    </div>
+    <MainLayout
+      midPanel={<Rooms rooms={rooms} />}
+      leftPanel={<LeftSidebar />}
+      rightPanel={<RightSidebar />}
+      header={<Header />}
+    />
   );
 };
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(ctx) {
   const client = initializeApollo();
-
-  const cookie = context.req?.headers?.cookie;
-
-  if (!cookie) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
+  const cookie = ctx?.req?.headers?.cookie;
 
   const { data } = await client.query({
-    query: gql`
-      query me {
-        me {
-          username
-          email
-        }
-      }
-    `,
+    query: ROOMS,
     context: {
       headers: {
         Cookie: cookie,
@@ -42,11 +36,13 @@ export async function getServerSideProps(context) {
     },
   });
 
+  console.log("data", data);
+
   return {
     props: {
-      user: data.me,
+      rooms: data.rooms,
     },
   };
 }
 
-export default Home;
+export default HomePage;

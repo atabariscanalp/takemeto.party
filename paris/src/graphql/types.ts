@@ -14,7 +14,7 @@ export interface Room {
   creatorId: string;
 }
 
-enum Tag {
+export enum Tag {
   POP = "POP",
   RAP = "RAP",
   JAZZ = "JAZZ",

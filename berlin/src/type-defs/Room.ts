@@ -34,7 +34,7 @@ export class Room {
   id: string;
 
   @Field(() => Tag)
-  tag: Tag;
+  tag: keyof typeof Tag;
 
   @Field()
   name: string;
