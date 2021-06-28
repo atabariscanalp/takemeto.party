@@ -9,7 +9,7 @@ import { ROOMS } from "../graphql/queries/room";
 import { Room } from "../graphql/types";
 
 interface RoomsProps {
-  rooms: [Room] | null;
+  rooms: [Room];
 }
 
 const HomePage: React.FC<RoomsProps> = ({ rooms }) => {
@@ -35,8 +35,6 @@ export async function getServerSideProps(ctx) {
       },
     },
   });
-
-  console.log("data", data);
 
   return {
     props: {

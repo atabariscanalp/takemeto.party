@@ -6,6 +6,7 @@ export const ROOMS = gql`
       id
       tag
       name
+      numPeopleInside
     }
   }
 `;
