@@ -3,7 +3,7 @@ import { initializeApollo } from "../../../graphql/apollo-client";
 import { ROOMS } from "../../../graphql/queries/room";
 import { Room } from "../../../graphql/types";
 import { MainLayout } from "../../layouts/MainLayout";
-import { Header } from "../../ui/Header";
+import { Header } from "../../ui/headers/Header";
 import { Rooms } from "../../ui/rooms/Rooms";
 import { LeftSidebar } from "../../ui/sidebars/LeftSidebar";
 import { RightSidebar } from "../../ui/sidebars/RightSidebar";

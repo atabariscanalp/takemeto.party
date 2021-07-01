@@ -12,7 +12,7 @@ export const RoomCard: React.FC<RoomCardProps> = ({ room }: { room: Room }) => {
     <Link href={`/room/${encodeURIComponent(room.id)}`}>
       <a
         className={
-          "flex items-center w-full px-2.5 py-2 rounded-md bg-neutral-300 justify-between"
+          "flex items-center w-full px-2.5 py-2 rounded-md bg-neutral-300 justify-between mb-4"
         }
       >
         <div className={"flex items-center p-1 self-stretch"}>

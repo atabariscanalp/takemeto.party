@@ -1,6 +1,8 @@
 module.exports = {
   mode: 'jit',
-  purge: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
+  purge: {
+		content: ['./src/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}', './safelist.txt'],
+	},
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     fontFamily: {
@@ -52,7 +54,9 @@ module.exports = {
       10: '40px',
       11: '44px',
       12: '48px',
-      24: '24rem'
+			15: '15rem',
+      24: '24rem',
+			55: '55rem'
     },
     colors: {
       transparent: 'transparent',

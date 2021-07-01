@@ -1,6 +1,5 @@
 import React from "react";
-import { LeftPanel, MidPanel, RightPanel } from "./Panels";
-import { Header } from "../ui/Header";
+import { HeadPanel, LeftPanel, MidPanel, RightPanel } from "./Panels";
 
 interface MainLayoutProps {
   leftPanel?: React.ReactNode;
@@ -17,7 +16,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
 }) => {
   return (
     <div className={"flex w-full h-full flex-col"}>
-      <Header>{header}</Header>
+      <HeadPanel>{header}</HeadPanel>
       <div className={"flex w-full h-full"}>
         <LeftPanel>{leftPanel}</LeftPanel>
         <MidPanel>{midPanel}</MidPanel>

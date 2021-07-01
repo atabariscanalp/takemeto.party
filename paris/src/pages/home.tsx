@@ -1,6 +1,6 @@
 import React from "react";
 import { MainLayout } from "../components/layouts/MainLayout";
-import { Header } from "../components/ui/Header";
+import { Header } from "../components/ui/headers/Header";
 import { Rooms } from "../components/ui/rooms/Rooms";
 import { LeftSidebar } from "../components/ui/sidebars/LeftSidebar";
 import { RightSidebar } from "../components/ui/sidebars/RightSidebar";
@@ -12,13 +12,18 @@ interface RoomsProps {
   rooms: [Room];
 }
 
+const onSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  e.preventDefault();
+  console.log(e.target.value);
+};
+
 const HomePage: React.FC<RoomsProps> = ({ rooms }) => {
   return (
     <MainLayout
       midPanel={<Rooms rooms={rooms} />}
       leftPanel={<LeftSidebar />}
       rightPanel={<RightSidebar />}
-      header={<Header />}
+      header={<Header onSearch={onSearch} />}
     />
   );
 };
@@ -35,6 +40,15 @@ export async function getServerSideProps(ctx) {
       },
     },
   });
+
+  if (!cookie) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {

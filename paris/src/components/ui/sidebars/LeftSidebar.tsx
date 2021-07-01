@@ -16,14 +16,5 @@ export const LeftSidebar: React.FC = () => {
     });
   };
 
-  if (data) {
-    console.log("data", data);
-  }
-
-  return (
-    <>
-      <button onClick={() => create()}>Create Room</button>
-      <button>Delete Room</button>
-    </>
-  );
+  return <></>;
 };

@@ -7,11 +7,11 @@ export enum Tag {
   RAP = "RAP",
   JAZZ = "JAZZ",
   CLASSICAL = "CLASSICAL",
-  HIPHOP = "HIP-HOP",
+  HIPHOP = "HIPHOP",
   ELECTRONIC = "ELECTRONIC",
   INDIE = "INDIE",
-  KPOP = "K-POP",
-  RB = "R&B",
+  KPOP = "KPOP",
+  RB = "RB",
   BLUES = "BLUES",
   METAL = "METAL",
   FUNK = "FUNK",
@@ -48,6 +48,7 @@ export class Room {
   @Field()
   numPeopleInside: number;
 
+  @Field(() => User)
   creator: User;
 
   @Field(() => ID)
