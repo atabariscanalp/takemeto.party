@@ -12,7 +12,7 @@ const sizeClassnames = {
 };
 
 const colorClassnames = {
-  primary: "",
+  primary: "bg-primary-300 border-primary-300 text-inverted",
   secondary: "",
   outline:
     "bg-transparent text-inverted border-neutral-100 hover:bg-neutral-100 hover:text-default",

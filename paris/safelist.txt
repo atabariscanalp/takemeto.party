@@ -16,3 +16,4 @@ bg-tag-15
 bg-tag-16
 bg-tag-17
 bg-tag-18
+border-error-100

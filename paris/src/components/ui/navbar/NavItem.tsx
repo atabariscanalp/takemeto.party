@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode } from "react";
 import Link from "next/link";
 
 const borderClassNames = {
@@ -12,30 +12,34 @@ interface NavItemProps {
   link?: string;
   border?: keyof typeof borderClassNames;
   className?: string;
+  onClick?: () => void;
 }
 
 export const NavItem: React.FC<NavItemProps> = ({
   icon,
-  link = "#",
+  link = "/home",
   border = "none",
   children,
   className = "",
+  onClick = null,
 }) => {
-  const [clicked, setClicked] = useState(false);
-  const onClick = () => setClicked(!clicked);
-
   return (
+    //TODO: reconfigure
     <li>
-      <Link href={link}>
+      {/* <Link href={link}>
         <a
           className={`${borderClassNames[border]} mx-5 ${className}`}
-          onClick={onClick}
+          onClick={() => onClick()}
         >
           {icon}
         </a>
-      </Link>
-
-      {clicked && children}
+      </Link> */}
+      <button
+        className={`${borderClassNames[border]} mx-5 ${className}`}
+        onClick={onClick}
+      >
+        {icon}
+      </button>
     </li>
   );
 };

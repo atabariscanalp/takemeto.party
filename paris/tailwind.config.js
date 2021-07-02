@@ -1,7 +1,7 @@
 module.exports = {
   mode: 'jit',
   purge: {
-		content: ['./src/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}', './safelist.txt'],
+		content: ['./src/**/*.{js,ts,jsx,tsx}', './safelist.txt'],
 	},
   darkMode: 'class', // or 'media' or 'class'
   theme: {
@@ -55,11 +55,14 @@ module.exports = {
       11: '44px',
       12: '48px',
 			15: '15rem',
+			20: '20rem',
       24: '24rem',
 			55: '55rem'
     },
     colors: {
       transparent: 'transparent',
+			black: "#000",
+			white: "#fff",
       primary: {
         100: 'var(--color-primary-100)',
         200: 'var(--color-primary-200)',
@@ -113,7 +116,9 @@ module.exports = {
     },
     textColor: {
       'default': '#000',
-      'inverted': '#fff'
+      'inverted': '#fff',
+			'grey': '#555',
+			'error': 'var(--color-error-100)'
     },
 		flex: {
 			'1': '1 1 0%',

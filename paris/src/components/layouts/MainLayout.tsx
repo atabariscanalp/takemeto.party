@@ -13,10 +13,12 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
   rightPanel,
   header,
   midPanel,
+  children,
 }) => {
   return (
     <div className={"flex w-full h-full flex-col"}>
       <HeadPanel>{header}</HeadPanel>
+      {children}
       <div className={"flex w-full h-full"}>
         <LeftPanel>{leftPanel}</LeftPanel>
         <MidPanel>{midPanel}</MidPanel>
