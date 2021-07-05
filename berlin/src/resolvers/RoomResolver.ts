@@ -55,6 +55,10 @@ export class RoomResolver {
     @Arg("addRoomArgs")
     { _tag, _name, _isPrivate, _description }: AddRoomInput
   ) {
+    console.log("tag", _tag);
+    console.log("tag", _name);
+    console.log("tag", _isPrivate);
+    console.log("tag", _description);
     return await ctx.prisma.room.create({
       data: {
         name: _name,

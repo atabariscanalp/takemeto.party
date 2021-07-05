@@ -4,6 +4,9 @@ import { Button } from "../Button";
 import Image from "next/image";
 import { Tag } from "../../../graphql/types";
 import { RoomTag } from "../rooms/RoomTag";
+import { useMutation } from "@apollo/client";
+import { CREATE_ROOM } from "../../../graphql/mutations/room";
+import { useRouter } from "next/router";
 
 interface Error {
   key?: string;
@@ -13,10 +16,16 @@ interface Error {
 
 export const CreateRoomModal: React.FC = () => {
   const [roomName, setRoomName] = useState("");
-  const [roomTag, setRoomTag] = useState<keyof typeof Tag>(null);
+  const [roomTag, setRoomTag] = useState<keyof typeof Tag | "">("");
   const [isSecStage, setSecStage] = useState(false);
   const [roomNameErr, setRoomNameErr] = useState<Error>(null);
   const [roomTagErr, setRoomTagErr] = useState<Error>(null);
+  const [isPrivate, setPrivate] = useState(false);
+  const [roomDescription, setDescription] = useState("");
+
+  const [createRoomMutation, { loading, error }] = useMutation(CREATE_ROOM);
+
+  const router = useRouter();
 
   const onRoomNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRoomName(e.target.value);
@@ -28,7 +37,7 @@ export const CreateRoomModal: React.FC = () => {
   };
 
   const onRoomTagChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRoomTag(Tag[e.target.value]);
+    if (Tag[e.target.value]) setRoomTag(Tag[e.target.value]);
     if (!e.target.value)
       setRoomTagErr({
         key: "null",
@@ -54,12 +63,56 @@ export const CreateRoomModal: React.FC = () => {
     if (roomTagErr?.key === "null") setRoomTagErr(null);
   };
 
+  const createRoom = async () => {
+    const res = await createRoomMutation({
+      variables: {
+        addRoomArgs: {
+          _name: roomName,
+          _tag: roomTag,
+          _isPrivate: isPrivate,
+          _description: roomDescription,
+        },
+      },
+    });
+    router.push(`room/${encodeURIComponent(res.data.createRoom.id)}`);
+  };
+
   if (isSecStage)
     return (
       <div className={"w-full h-full flex justify-center items-start"}>
-        <span>sec stage</span>
-        <span>{roomName}</span>
-        <span>{roomTag}</span>
+        <div
+          className={
+            "flex flex-col items-start justify-start w-full h-full pl-9"
+          }
+        >
+          <h1 className={"text-2xl font-medium my-5"}>Room Features</h1>
+          <label>description</label>
+          <textarea
+            value={roomDescription}
+            onChange={(e) => setDescription(e.target.value)}
+            className={"border-2 border-black mb-6 p-3"}
+            maxLength={255}
+            cols={40}
+            rows={3}
+          />
+          <div className={"flex items-center mb-5"}>
+            <input //TODO: add password section if private
+              id={"checkbox"}
+              type={"checkbox"}
+              name={"isPrivate"}
+              checked={isPrivate}
+              onChange={() => setPrivate(!isPrivate)}
+              className={"mr-3"}
+              value={""}
+            />
+            <label className={"text-xl"} htmlFor={"checkbox"}>
+              private
+            </label>
+          </div>
+          <Button size={"medium"} className={"w-20"} onClick={createRoom}>
+            Create
+          </Button>
+        </div>
       </div>
     );
 
@@ -70,6 +123,9 @@ export const CreateRoomModal: React.FC = () => {
           "flex flex-col justify-center items-start w-full h-full pl-4"
         }
       >
+        <h1 className={"text-2xl font-medium relative bottom-11"}>
+          Create A Room
+        </h1>
         <Input
           label={"Room Name"}
           name={"Room Name Field"}
@@ -91,7 +147,12 @@ export const CreateRoomModal: React.FC = () => {
           <RoomTag tag={"PUNK"} onClick={onClick} />
           <RoomTag tag={"ROCK"} onClick={onClick} />
         </div>
-        <Button size={"medium"} className={"w-20"} onClick={gotoSecStage}>
+        <Button
+          size={"medium"}
+          className={"w-20"}
+          onClick={gotoSecStage}
+          loading={loading}
+        >
           Continue
         </Button>
       </div>

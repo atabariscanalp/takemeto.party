@@ -12,6 +12,7 @@ export interface Room {
   tag: keyof typeof Tag;
   numPeopleInside: number;
   creatorId: string;
+  isPrivate: boolean;
 }
 
 export enum Tag {
