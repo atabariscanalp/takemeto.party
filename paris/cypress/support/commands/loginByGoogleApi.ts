@@ -34,3 +34,5 @@ Cypress.Commands.add("loginByGoogleApi", () => {
     });
   });
 });
+
+export {}
