@@ -8,12 +8,14 @@ generator client {
 }
 
 model User {
-  id       String   @id @default(uuid())
-  email    String   @unique
-  username String
-  googleId String?  @unique @map("google_id")
-  role     Role     @default(USER)
-  profile  Profile?
+  id            String   @id @default(uuid())
+  email         String   @unique
+  username      String
+  googleId      String?  @unique @map("google_id")
+  role          Role     @default(USER)
+  profile       Profile?
+  currentRoom   Room?
+  currentRoomId String?  @map("current_room_id")
 
   @@map("users")
 }
@@ -28,9 +30,45 @@ model Profile {
   @@map("profiles")
 }
 
+model Room {
+  id              String  @id @default(uuid())
+  tag             Tag
+  name            String  @unique
+  description     String?
+  isPrivate       Boolean
+  numPeopleInside Int     @default(1)
+  creatorId       String  @unique @map("creator_id")
+  creator         User    @relation(fields: [creatorId], references: [id])
+
+  @@map("rooms")
+}
+
 enum Role {
   USER   @map("user")
   ADMIN  @map("admin")
 
   @@map("_Role")
+}
+
+enum Tag {
+  POP         @map("pop")
+  RAP         @map("rap")
+  JAZZ        @map("jazz")
+  CLASSICAL   @map("classical")
+  HIPHOP      @map("hip-hop")
+  ELECTRONIC  @map("electronic")
+  INDIE       @map("indie")
+  KPOP        @map("k-pop")
+  RB          @map("r&b")
+  BLUES       @map("blues")
+  METAL       @map("metal")
+  FUNK        @map("funk")
+  LATIN       @map("latin")
+  ARAB        @map("arab")
+  ACOUSTIC    @map("acoustic")
+  PUNK        @map("punk")
+  ROCK        @map("rock")
+  MIX         @map("mix")
+
+  @@map("_Tag")
 }

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { Button } from "../../ui/Button";
-import GoogleIcon from "../../../icons";
+import { Google as GoogleIcon } from "../../../icons";
 import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
 import { USER } from "../../../graphql/queries/user";
 
-export const LoginPage: React.FC = ({}) => {
+export const LoginPage: React.FC = () => {
   const onClick = () => {
     window.location.href = "http://localhost:5000/auth/google";
   };

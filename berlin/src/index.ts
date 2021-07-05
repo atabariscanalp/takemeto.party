@@ -2,7 +2,7 @@ import "reflect-metadata";
 import * as tp from "type-graphql";
 import express, { Request } from "express";
 import { ApolloServer } from "apollo-server-express";
-import { ProfileResolver, UserResolver } from "./resolvers";
+import { ProfileResolver, RoomResolver, UserResolver } from "./resolvers";
 import { PrismaClient, Role } from "@prisma/client";
 import middleware from "./middleware";
 import dayjs from "dayjs";
@@ -74,7 +74,7 @@ import { getUserFromId, UserFindOrCreate } from "./auth/helper";
   });
 
   const schema = await tp.buildSchema({
-    resolvers: [UserResolver, ProfileResolver],
+    resolvers: [UserResolver, ProfileResolver, RoomResolver],
   });
 
   type Token = {

@@ -1,1 +1,5 @@
-export { default } from './Google'
+export { default as Exit } from './Exit'
+export { default as Google } from './Google'
+export { default as Plus } from './Plus'
+export { default as Settings } from './Settings'
+export { default as Vinyl } from './Vinyl'

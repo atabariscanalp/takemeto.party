@@ -1,6 +1,8 @@
 module.exports = {
   mode: 'jit',
-  purge: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
+  purge: {
+		content: ['./src/**/*.{js,ts,jsx,tsx}', './safelist.txt'],
+	},
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     fontFamily: {
@@ -52,10 +54,15 @@ module.exports = {
       10: '40px',
       11: '44px',
       12: '48px',
-      24: '24rem'
+			15: '15rem',
+			20: '20rem',
+      24: '24rem',
+			55: '55rem'
     },
     colors: {
       transparent: 'transparent',
+			black: "#000",
+			white: "#fff",
       primary: {
         100: 'var(--color-primary-100)',
         200: 'var(--color-primary-200)',
@@ -85,12 +92,41 @@ module.exports = {
         100: 'var(--color-warning-100)',
         200: '#CAB23F',
         300: '#B49E35'
-      }
+      },
+			tag: {
+				1: 'var(--color-tag-1)',
+				2: 'var(--color-tag-2)',
+				3: 'var(--color-tag-3)',
+				4: 'var(--color-tag-4)',
+				5: 'var(--color-tag-5)',
+				6: 'var(--color-tag-6)',
+				7: 'var(--color-tag-7)',
+				8: 'var(--color-tag-8)',
+				9: 'var(--color-tag-9)',
+				10: 'var(--color-tag-10)',
+				11: 'var(--color-tag-11)',
+				12: 'var(--color-tag-12)',
+				13: 'var(--color-tag-13)',
+				14: 'var(--color-tag-14)',
+				15: 'var(--color-tag-15)',
+				16: 'var(--color-tag-16)',
+				17: 'var(--color-tag-17)',
+				18: 'var(--color-tag-18)'
+			}
     },
     textColor: {
       'default': '#000',
-      'inverted': '#fff'
-    }
+      'inverted': '#fff',
+			'grey': '#555',
+			'error': 'var(--color-error-100)'
+    },
+		flex: {
+			'1': '1 1 0%',
+			auto: '1 1 auto',
+			initial: '0 1 auto',
+			none: 'none',
+			'3': '3 1 0%'
+		}
   },
   variants: {
     extend: {
