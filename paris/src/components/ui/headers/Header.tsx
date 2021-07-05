@@ -1,7 +1,7 @@
 import React from "react";
 import { SearchBar } from "../SearchBar";
 import { HeaderLogo } from "./HeaderLogo";
-import { Navbar } from "../navbar/NavBar";
+import { Navbar } from "../navbar/Navbar";
 
 interface HeaderProps {
   onSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;

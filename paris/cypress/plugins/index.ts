@@ -17,7 +17,6 @@
  */
 // eslint-disable-next-line no-unused-vars
 module.exports = (on, config) => {
-  console.log("r token", process.env.GOOGLE_REFRESH_TOKEN);
   (config.env.googleRefreshToken = process.env.GOOGLE_REFRESH_TOKEN),
     (config.env.googleClientId = process.env.GOOGLE_CLIENT_ID),
     (config.env.googleClientSecret = process.env.GOOGLE_CLIENT_SECRET);
